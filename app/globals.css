@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  --color-ink-rgb: 15 23 42; /* slate-950-ish */
+  --color-primary-rgb: 79 70 229; /* indigo-600 */
+  --color-primary-hover-rgb: 67 56 202; /* indigo-700 */
+  --color-primary-soft-rgb: 238 242 255; /* indigo-50 */
+  --color-honey-rgb: 245 158 11; /* amber-500 */
+  --color-honey-soft-rgb: 255 251 235; /* amber-50 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-ink: rgb(var(--color-ink-rgb));
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-primary-hover: rgb(var(--color-primary-hover-rgb));
+  --color-primary-soft: rgb(var(--color-primary-soft-rgb));
+  --color-honey: rgb(var(--color-honey-rgb));
+  --color-honey-soft: rgb(var(--color-honey-soft-rgb));
+
+  --font-sans: var(--font-inter);
+
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-fade-up: fade-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-scale-in: scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-raised: 0 8px 24px -8px rgb(15 23 42 / 0.18);
+  --shadow-glow: 0 0 0 1px rgb(var(--color-primary-rgb) / 0.35), 0 8px 28px -8px rgb(var(--color-primary-rgb) / 0.45);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.text-gradient-brand {
+  background-image: linear-gradient(90deg, rgb(var(--color-primary-rgb)), rgb(var(--color-honey-rgb)));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.hover-lift {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-raised);
+}
