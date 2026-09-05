@@ -8,7 +8,7 @@ import { FAQS } from '@/lib/content'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Answers to common questions about BeeBid — AI resume tailoring, browser autofill, data handling, and pricing.',
+  description: 'Answers to common questions about BeeBid: AI resume tailoring, browser autofill, data handling, and pricing.',
   alternates: { canonical: '/faq' },
 }
 

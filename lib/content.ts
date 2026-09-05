@@ -29,15 +29,15 @@ export const FEATURES: Feature[] = [
     icon: 'sparkles',
     title: 'AI resume tailoring',
     shortTitle: 'AI tailoring',
-    tagline: 'A resume rebuilt around every job — never fabricated.',
+    tagline: 'A resume rebuilt around every job, never fabricated.',
     description:
-      'BeeBid reads the job description and rebuilds your resume around it: headline, summary, skills, and the framing of your most recent experience all shift to match the role. Nothing is invented — tailoring only ever repositions evidence that already exists in your work history.',
+      'BeeBid reads the job description and rebuilds your resume around it: headline, summary, skills, and the framing of your most recent experience all shift to match the role. Nothing is invented; tailoring only ever repositions evidence that already exists in your work history.',
     metaDescription:
-      'BeeBid AI resume tailoring rebuilds your resume for every job description — real role identity, real evidence, never fabricated experience. See how it works.',
+      'BeeBid AI resume tailoring rebuilds your resume for every job description, with real role identity, real evidence, and never fabricated experience. See how it works.',
     points: [
       {
         title: 'Role-aware, not keyword-stuffed',
-        body: 'A dedicated role-specialization pass decides whether a posting calls for a generalist or a specific platform/discipline identity, then carries that identity consistently from headline through your most recent role — instead of blindly stuffing in keywords from the posting.',
+        body: 'A dedicated role-specialization pass decides whether a posting calls for a generalist or a specific platform/discipline identity, then carries that identity consistently from headline through your most recent role, instead of blindly stuffing in keywords from the posting.',
       },
       {
         title: 'Grounded in your real history',
@@ -45,7 +45,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: 'A fresh pass for every application',
-        body: 'Apply to five different roles and get five resumes, each built around that specific posting — not one generic resume reused everywhere.',
+        body: 'Apply to five different roles and get five resumes, each built around that specific posting, not one generic resume reused everywhere.',
       },
       {
         title: 'Cover letters included',
@@ -55,7 +55,7 @@ export const FEATURES: Feature[] = [
     steps: [
       { title: 'Paste or open the job posting', body: 'BeeBid reads the job description directly, or you point it at the listing you found.' },
       { title: 'AI rebuilds your resume', body: 'Headline, summary, skills, and recent experience are re-framed around what this specific role is asking for.' },
-      { title: 'Review before you send', body: 'Every change is visible and editable — you stay in control of what goes out under your name.' },
+      { title: 'Review before you send', body: 'Every change is visible and editable, so you stay in control of what goes out under your name.' },
     ],
   },
   {
@@ -65,9 +65,9 @@ export const FEATURES: Feature[] = [
     shortTitle: 'Autofill',
     tagline: 'Skip the retyping. Apply in seconds, not minutes.',
     description:
-      'The BeeBid browser extension recognizes application forms on the job sites you already use and fills them from your saved profile — name, contact details, work history, education, and the custom questions that trip up most autofillers.',
+      'The BeeBid browser extension recognizes application forms on the job sites you already use and fills them from your saved profile: name, contact details, work history, education, and the custom questions that trip up most autofillers.',
     metaDescription:
-      'The BeeBid browser extension autofills job application forms in one click, including custom screening questions — built for the sites job seekers actually apply on.',
+      'The BeeBid browser extension autofills job application forms in one click, including custom screening questions, built for the sites job seekers actually apply on.',
     points: [
       {
         title: 'Built for real application forms',
@@ -101,11 +101,11 @@ export const FEATURES: Feature[] = [
     description:
       'Your work history, education, and skills live in one structured profile instead of scattered across a dozen resume files. Generate polished resumes and cover letters from that single source of truth, and keep a library of every version you have sent.',
     metaDescription:
-      'Keep your work history, resumes, and cover letters in one structured BeeBid profile — always in sync, exportable, and ready to tailor for the next application.',
+      'Keep your work history, resumes, and cover letters in one structured BeeBid profile, always in sync, exportable, and ready to tailor for the next application.',
     points: [
       {
         title: 'Structured profile data',
-        body: 'Work experience, education, and skills are stored as structured data, not just a static PDF — so tailoring and autofill can both draw on it accurately.',
+        body: 'Work experience, education, and skills are stored as structured data, not just a static PDF, so tailoring and autofill can both draw on it accurately.',
       },
       {
         title: 'A file library that stays organized',
@@ -113,7 +113,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: 'Answer history you can reuse',
-        body: 'Once you have answered a screening question, BeeBid remembers it — so the next application with a similar question is even faster.',
+        body: 'Once you have answered a screening question, BeeBid remembers it, so the next application with a similar question is even faster.',
       },
       {
         title: 'Organization templates',
@@ -143,7 +143,7 @@ export const FEATURES: Feature[] = [
       },
       {
         title: 'Member roles',
-        body: 'Control who can edit profiles, review tailored resumes, or just view application progress — access matches responsibility.',
+        body: 'Control who can edit profiles, review tailored resumes, or just view application progress: access matches responsibility.',
       },
       {
         title: 'Shared job links',
@@ -171,7 +171,7 @@ export const HOW_IT_WORKS_STEPS = [
   },
   {
     title: 'Find a job and let AI tailor your resume',
-    body: 'Open a posting and BeeBid rebuilds your resume and drafts a cover letter around that specific role — grounded in your real experience.',
+    body: 'Open a posting and BeeBid rebuilds your resume and drafts a cover letter around that specific role, grounded in your real experience.',
   },
   {
     title: 'Autofill the application',
@@ -238,7 +238,7 @@ export const FAQS: Faq[] = [
   {
     question: 'Does BeeBid make things up on my resume?',
     answer:
-      'No. Tailoring only repositions and re-emphasizes experience you already have — a different headline, a re-ordered skills list, a summary written around the role. It does not invent employers, titles, dates, or accomplishments.',
+      'No. Tailoring only repositions and re-emphasizes experience you already have: a different headline, a re-ordered skills list, a summary written around the role. It does not invent employers, titles, dates, or accomplishments.',
   },
   {
     question: 'Which job sites does the autofill extension work on?',
@@ -258,11 +258,11 @@ export const FAQS: Faq[] = [
   {
     question: 'Do I need the browser extension to use BeeBid?',
     answer:
-      'The web app covers your profile, resume tailoring, and application history on its own. The extension adds one-click autofill on the job sites you apply on — most people use both together.',
+      'The web app covers your profile, resume tailoring, and application history on its own. The extension adds one-click autofill on the job sites you apply on, and most people use both together.',
   },
   {
     question: 'What happens to my data?',
     answer:
-      'Your profile and resume data are yours. BeeBid uses them to power tailoring and autofill for your own applications — not to build a marketing profile or resell your information.',
+      'Your profile and resume data are yours. BeeBid uses them to power tailoring and autofill for your own applications, not to build a marketing profile or resell your information.',
   },
 ]

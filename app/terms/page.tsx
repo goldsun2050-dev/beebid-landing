@@ -16,7 +16,7 @@ const SECTIONS = [
   },
   {
     title: 'Your account',
-    body: 'You need an account to use BeeBid. Keep your credentials secure — you are responsible for activity under your account. Organization owners and admins are responsible for the members they invite.',
+    body: 'You need an account to use BeeBid. Keep your credentials secure; you are responsible for activity under your account. Organization owners and admins are responsible for the members they invite.',
   },
   {
     title: 'Acceptable use',
@@ -24,7 +24,7 @@ const SECTIONS = [
   },
   {
     title: 'AI-generated content',
-    body: 'Tailored resumes and cover letters are generated from your existing profile data and the job description you provide. You are responsible for reviewing generated content before sending it — BeeBid is a drafting and autofill tool, not a substitute for your own judgment about what you submit.',
+    body: 'Tailored resumes and cover letters are generated from your existing profile data and the job description you provide. You are responsible for reviewing generated content before sending it. BeeBid is a drafting and autofill tool, not a substitute for your own judgment about what you submit.',
   },
   {
     title: 'Subscriptions and billing',

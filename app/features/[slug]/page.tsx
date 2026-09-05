@@ -39,7 +39,7 @@ export async function generateMetadata({
     description: feature.metaDescription,
     alternates: { canonical: `/features/${feature.slug}` },
     openGraph: {
-      title: `${feature.title} — BeeBid`,
+      title: `${feature.title} | BeeBid`,
       description: feature.metaDescription,
     },
   }

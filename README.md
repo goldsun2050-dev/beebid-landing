@@ -13,7 +13,7 @@ shared independently, not just as an anchor on the homepage.
 
 ```
 app/
-  page.tsx                 Homepage — condensed version of every section
+  page.tsx                 Homepage: condensed version of every section
   features/page.tsx        Feature hub
   features/[slug]/page.tsx One page per feature (ai-tailoring, autofill, resume-hub, teams)
   how-it-works/page.tsx
@@ -29,19 +29,19 @@ components/
              FeatureGrid, HowItWorks, PersonaScenarios, PricingTable,
              FaqAccordion, CtaBand, PageHero
 lib/
-  content.ts   All copy: nav, features, pricing tiers, FAQs — single source of
+  content.ts   All copy: nav, features, pricing tiers, FAQs. Single source of
                truth shared by the homepage and every deep page.
   site.ts      SITE_URL / APP_URL / SIGNUP_URL / LOGIN_URL constants.
 ```
 
 All product visuals (hero browser mockup, resume before/after, dashboard and
-team previews) are hand-built React/SVG components, not screenshots — no
+team previews) are hand-built React/SVG components, not screenshots. No
 external image hosting, fully theme-consistent, and animatable.
 
 Pricing tiers (Free / Pro / Teams) are feature-gated with no invented dollar
-amounts. Update `lib/content.ts` → `PRICING_PLANS` once real prices are set.
+amounts. Update `lib/content.ts` -> `PRICING_PLANS` once real prices are set.
 The persona-scenario section intentionally replaces conventional
-testimonials — there are no fabricated customer quotes or names anywhere on
+testimonials: there are no fabricated customer quotes or names anywhere on
 the site; swap in real testimonials there once you have them.
 
 ## Development
@@ -50,7 +50,7 @@ the site; swap in real testimonials there once you have them.
 npm run dev          # http://localhost:3000
 npm run build         # next build (standalone output) + copies public/ and
                        # .next/static into .next/standalone for deploy
-npm run start         # node .next/standalone/server.js — what pm2 runs
+npm run start         # node .next/standalone/server.js, what pm2 runs
 npm run lint
 npm run type-check
 ```
@@ -59,10 +59,13 @@ npm run type-check
 
 Mirrors the `flybid-app` / `flybid-admin` pm2 + nginx convention:
 
-- `ecosystem.config.cjs` — pm2 app `beebid-landing`, runs
-  `.next/standalone/server.js` on `127.0.0.1:3200`.
-- `deploy/nginx-beebid.vip.conf` — HTTPS termination + reverse proxy for
-  `beebid.vip` (with `www.beebid.vip` redirecting to the apex).
+- `ecosystem.config.cjs`: pm2 app `beebid-landing`, runs
+  `.next/standalone/server.js` on `127.0.0.1:3400` (interpreter pinned to the
+  server's nvm Node v22.23.1, since Next.js 16 needs Node >=20.9).
+- `deploy/nginx-beebid.vip.conf`: HTTPS termination + reverse proxy for
+  `beebid.vip`.
+- `.github/workflows/deploy.yml`: auto-deploys on push to `main` via the
+  `ENV` repo secret (SERVER_HOST/SERVER_USER/SERVER_PASSWORD).
 
 ```bash
 npm ci

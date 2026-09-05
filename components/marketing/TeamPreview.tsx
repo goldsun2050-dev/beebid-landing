@@ -4,7 +4,7 @@ const MEMBERS = [
   { name: 'Priya S.', role: 'Owner', icon: Crown, color: 'text-honey' },
   { name: 'Marcus T.', role: 'Coach', icon: Shield, color: 'text-primary' },
   { name: 'Dana K.', role: 'Coach', icon: Shield, color: 'text-primary' },
-  { name: 'Candidate — R. Alvarez', role: 'Member', icon: User, color: 'text-slate-400' },
+  { name: 'Candidate: R. Alvarez', role: 'Member', icon: User, color: 'text-slate-400' },
 ]
 
 const SHARED_JOBS = [

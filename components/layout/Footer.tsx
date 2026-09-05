@@ -14,7 +14,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-500">
-            AI resume tailoring and one-click autofill for every job application — grounded in your
+            AI resume tailoring and one-click autofill for every job application, grounded in your
             real experience.
           </p>
         </div>

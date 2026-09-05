@@ -34,7 +34,7 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 max-w-xl text-balance text-base leading-relaxed text-slate-500 sm:text-lg">
               BeeBid rebuilds your resume around every job you apply to with AI, then autofills the
-              application for you — grounded in your real experience, never fabricated.
+              application for you, grounded in your real experience, never fabricated.
             </p>
             <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
               <Button href={SIGNUP_URL} size="lg">
@@ -65,7 +65,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="AI resume tailoring"
             title="A resume rebuilt around every job, not one resume reused everywhere"
-            description="BeeBid re-frames your headline, summary, skills, and recent experience around the role you're applying to — every claim traces back to real experience you already have."
+            description="BeeBid re-frames your headline, summary, skills, and recent experience around the role you're applying to. Every claim traces back to real experience you already have."
           />
           <AnimateIn className="mt-12" delay={0.1}>
             <ResumeTailorDemo />
@@ -87,7 +87,7 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Everything included"
             title="Everything your job search needs"
-            description="One account for your profiles, your resumes, and the AI that tailors them — plus the extension that applies for you."
+            description="One account for your profiles, your resumes, and the AI that tailors them, plus the extension that applies for you."
           />
           <div className="mt-12">
             <FeatureGrid />

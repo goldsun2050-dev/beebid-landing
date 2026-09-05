@@ -12,7 +12,7 @@ import { SIGNUP_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'How it works',
   description:
-    'From building your profile to AI resume tailoring and one-click autofill — see the full BeeBid workflow, step by step.',
+    'From building your profile to AI resume tailoring and one-click autofill, see the full BeeBid workflow, step by step.',
   alternates: { canonical: '/how-it-works' },
 }
 
@@ -22,7 +22,7 @@ export default function HowItWorksPage() {
       <PageHero
         eyebrow="How it works"
         title="From job posting to submitted application in minutes"
-        description="Four steps, every time you apply — no rewriting your resume from scratch, no retyping the same form fields."
+        description="Four steps, every time you apply. No rewriting your resume from scratch, no retyping the same form fields."
       >
         <Button href={SIGNUP_URL} size="lg">
           Get started free

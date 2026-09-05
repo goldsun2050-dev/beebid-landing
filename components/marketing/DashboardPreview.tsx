@@ -1,10 +1,10 @@
 import { FileText, FolderKanban, Mail } from 'lucide-react'
 
 const DOCS = [
-  { name: 'Resume — Senior Frontend Engineer @ Acme Cloud', kind: 'Resume', date: 'Sent Tue' },
-  { name: 'Cover letter — Acme Cloud', kind: 'Cover letter', date: 'Sent Tue' },
-  { name: 'Resume — Staff Engineer @ Northwind', kind: 'Resume', date: 'Sent Mon' },
-  { name: 'Resume — Frontend Lead @ Vellum', kind: 'Resume', date: 'Last week' },
+  { name: 'Resume: Senior Frontend Engineer @ Acme Cloud', kind: 'Resume', date: 'Sent Tue' },
+  { name: 'Cover letter: Acme Cloud', kind: 'Cover letter', date: 'Sent Tue' },
+  { name: 'Resume: Staff Engineer @ Northwind', kind: 'Resume', date: 'Sent Mon' },
+  { name: 'Resume: Frontend Lead @ Vellum', kind: 'Resume', date: 'Last week' },
 ]
 
 export function DashboardPreview() {
