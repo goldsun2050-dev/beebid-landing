@@ -1,0 +1,107 @@
+name: Deploy beebid-landing
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Parse ENV secret
+        id: parse
+        env:
+          ENV_BLOB: ${{ secrets.ENV }}
+        run: |
+          if [ -z "$ENV_BLOB" ]; then
+            echo "::error::Missing repository secret ENV"
+            exit 1
+          fi
+          HOST=$(printf '%s\n' "$ENV_BLOB" | grep '^SERVER_HOST=' | head -n1 | cut -d'=' -f2- | tr -d '\r')
+          USER=$(printf '%s\n' "$ENV_BLOB" | grep '^SERVER_USER=' | head -n1 | cut -d'=' -f2- | tr -d '\r')
+          PASS=$(printf '%s\n' "$ENV_BLOB" | grep '^SERVER_PASSWORD=' | head -n1 | cut -d'=' -f2- | tr -d '\r')
+          if [ -z "$HOST" ] || [ -z "$USER" ] || [ -z "$PASS" ]; then
+            echo "::error::ENV secret is missing SERVER_HOST, SERVER_USER, or SERVER_PASSWORD"
+            exit 1
+          fi
+          echo "::add-mask::$HOST"
+          echo "::add-mask::$USER"
+          echo "::add-mask::$PASS"
+          echo "host=$HOST" >> "$GITHUB_OUTPUT"
+          echo "user=$USER" >> "$GITHUB_OUTPUT"
+          echo "password=$PASS" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ steps.parse.outputs.host }}
+          username: ${{ steps.parse.outputs.user }}
+          password: ${{ steps.parse.outputs.password }}
+          script_stop: true
+          command_timeout: 10m
+          script: |
+            set -e
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -f "$HOME/.bashrc" ] && \. "$HOME/.bashrc" || true
+            [ -f "$HOME/.profile" ] && \. "$HOME/.profile" || true
+
+            node -v
+            APP_DIR=/root/project/beebid-landing
+            mkdir -p "$APP_DIR"
+            cd "$APP_DIR"
+
+            if [ -d .git ]; then
+              git fetch --quiet origin main
+              git reset --hard origin/main
+            else
+              git clone --quiet https://github.com/goldsun2050-dev/beebid-landing.git .
+            fi
+
+            npm install
+            npm run build
+            test -f .next/standalone/server.js || { echo ".next/standalone/server.js missing after build"; exit 1; }
+
+            # nginx vhost (reverse proxy to the pm2 Next.js standalone server)
+            if [ -f deploy/nginx-beebid.vip.conf ]; then
+              if [ -f /etc/letsencrypt/live/beebid.vip/fullchain.pem ]; then
+                cp deploy/nginx-beebid.vip.conf /etc/nginx/sites-available/beebid.vip
+              else
+                awk 'BEGIN{p=1} /^# HTTPS/{p=0} p' deploy/nginx-beebid.vip.conf \
+                  > /etc/nginx/sites-available/beebid.vip
+              fi
+              ln -sfn /etc/nginx/sites-available/beebid.vip /etc/nginx/sites-enabled/beebid.vip
+              nginx -t
+              systemctl reload nginx
+              if command -v certbot >/dev/null 2>&1 && [ ! -f /etc/letsencrypt/live/beebid.vip/fullchain.pem ]; then
+                certbot --nginx -d beebid.vip --non-interactive --agree-tos \
+                  --register-unsafely-without-email --redirect || true
+                if [ -f /etc/letsencrypt/live/beebid.vip/fullchain.pem ]; then
+                  cp deploy/nginx-beebid.vip.conf /etc/nginx/sites-available/beebid.vip
+                  nginx -t && systemctl reload nginx
+                fi
+              fi
+            fi
+
+            command -v pm2 >/dev/null 2>&1 || npm install -g pm2
+
+            # Reload in place so the pm2 id stays stable; cold-start on first deploy.
+            pm2 reload ecosystem.config.cjs --update-env || pm2 start ecosystem.config.cjs --update-env
+            pm2 save
+
+            ok=0
+            for i in 1 2 3 4 5 6 7 8; do
+              if curl -fsS http://127.0.0.1:3400/healthz | grep -q '"app":"beebid-landing"'; then
+                ok=1; break
+              fi
+              echo "health attempt $i failed; waiting..."
+              sleep 2
+            done
+            if [ "$ok" != "1" ]; then
+              echo "==== pm2 status ===="; pm2 status || true
+              echo "==== logs ===="; pm2 logs beebid-landing --lines 60 --nostream || true
+              exit 1
+            fi
+            echo "beebid-landing healthy on :3400"
